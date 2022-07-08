@@ -1,0 +1,15 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+
+# Added for publishing template
+cdk.context.json
+
+.vscode
+.DS_Store
+.env
