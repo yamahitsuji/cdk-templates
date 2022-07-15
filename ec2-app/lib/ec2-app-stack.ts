@@ -53,9 +53,9 @@ export class Ec2AppStack extends cdk.Stack {
       'Allow ALB to access EC2'
     )
 
-    const dbSG = new ec2.SecurityGroup(this, 'SecurityGroupForRedshift', {
+    const dbSG = new ec2.SecurityGroup(this, 'SecurityGroupForRDS', {
       vpc,
-      description: 'SG for Redshift',
+      description: 'SG for RDS',
       allowAllOutbound: true,
     })
     dbSG.addIngressRule(
