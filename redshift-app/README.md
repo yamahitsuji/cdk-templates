@@ -1,14 +1,18 @@
-# Welcome to your CDK TypeScript project
+# Redshiftを含むアーキテクチャサンプル
+Application Load Balancer(ALB)、EC2、Redshiftを用いたアプリケーションのサンプルです。  
+Redshiftは現在(2022/07)、CDKのL2対応がアルファ版のため、Redshift部分のみL1で書いています。
 
-This is a blank project for CDK development with TypeScript.
+## アーキテクチャ図
+![](./architecture.png)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+## 使用サービス
+* Application Load Balancer(ALB)  
+ロードバランサに使用します。リスナーにEC2のターゲットグループを設定し、各EC2インスタンスにリクエストを振り分けます。
+* EC2  
+アプリケーションサーバです。サンプルではEC2のプライベートIPアドレスを含む、固定文字列を返します。
+* Redshift  
+Redshiftのクラスターです。
+* NATゲートウェイ  
+プライベートサブネット内のEC2インスタンスが外部のインターネットからソフトウェアをダウンロードできるようにするため、設置しています。
+* AWS Secrets Manager  
+Redshiftのパスワードを保存します。

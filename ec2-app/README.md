@@ -1,14 +1,17 @@
-# Welcome to your CDK TypeScript project
+# HTTP通信を行うEC2アプリケーションのアーキテクチャサンプル
+Application Load Balancer(ALB)、EC2、RDSを用いたアプリケーションのサンプルです。HTTPS通信ではなく、HTTP通信を行います。
 
-This is a blank project for CDK development with TypeScript.
+## アーキテクチャ図
+![](./architecture.png)
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+## 使用サービス
+* Application Load Balancer(ALB)  
+ロードバランサに使用します。リスナーにEC2のターゲットグループを設定し、各EC2インスタンスにリクエストを振り分けます。
+* EC2  
+アプリケーションサーバです。サンプルではプライベートIPアドレスを含む、固定文字列を返します。
+* RDS  
+RDBです。マルチAZ構成にしています。
+* NATゲートウェイ  
+プライベートサブネット内のEC2インスタンスが外部のインターネットからソフトウェアをダウンロードできるようにするため、設置しています。
+* AWS Secrets Manager  
+RDSのパスワードを保存します。

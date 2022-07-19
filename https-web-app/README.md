@@ -1,11 +1,11 @@
 # HTTPS通信を行うEC2アプリケーションのアーキテクチャサンプル
-Application Load Balancer(ALB)、EC2、RDSを用いたアプリケーションのサンプルです。
+Application Load Balancer(ALB)、EC2、RDSを用いたアプリケーションのサンプルです。AWS Certificate Manager(ACM)を用いて公開鍵証明書を発行し、HTTPS通信を行います。
 
 ## アーキテクチャ図
 ![](./architecture.png)
 
 ## 使用サービス
-* ALB  
+* Application Load Balancer(ALB)  
 ロードバランサに使用します。リスナーにEC2のターゲットグループを設定し、各EC2インスタンスにリクエストを振り分けます。
 * EC2  
 アプリケーションサーバです。サンプルではプライベートIPアドレスを含む、固定文字列を返します。
