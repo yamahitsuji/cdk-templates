@@ -1,2 +1,2 @@
-# cdk-templates
-AWS CDK templates.
+# CDK Templates
+AWS CDKのテンプレート集です。
