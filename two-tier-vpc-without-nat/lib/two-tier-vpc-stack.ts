@@ -10,7 +10,7 @@ export class TwoTierVpcWithoutNatStack extends Stack {
 
     const vpc = new ec2.Vpc(this, 'VPC', {
       cidr: vpcCidr,
-      maxAzs: 3,
+      maxAzs: 2,
       subnetConfiguration: [
         {
           cidrMask: 24,
@@ -20,7 +20,7 @@ export class TwoTierVpcWithoutNatStack extends Stack {
         {
           cidrMask: 24,
           name: 'private',
-          subnetType: ec2.SubnetType.PRIVATE_ISOLATED,
+          subnetType: ec2.SubnetType.PRIVATE_WITH_NAT,
         },
       ],
     })

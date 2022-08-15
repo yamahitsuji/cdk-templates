@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register'
 import * as cdk from 'aws-cdk-lib'
-import { TwoTierVpcWithoutNatStack } from '../lib/three-tier-vpc-stack'
+import { TwoTierVpcWithoutNatStack } from '../lib/two-tier-vpc-stack'
 
 const app = new cdk.App()
 new TwoTierVpcWithoutNatStack(app, 'TwoTierVpcWithoutNatStack', {
